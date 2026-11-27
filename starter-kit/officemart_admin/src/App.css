@@ -1,0 +1,44 @@
+/* HOAN_THIEN: viết CSS cho bài làm tại đây (hoặc tách thành nhiều tệp CSS nhỏ). */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #1f2937;
+}
+
+.banner_admin_product {
+  background-color: #FF0032;
+}
+
+.banner_admin_product__text{
+  color: aliceblue;
+} 
+
+.productStatus_true{
+  background-color: green;
+}
+
+.productStatus_false{
+  background-color: red;
+}
+
+.out_of_stock{
+  color: red;
+}
+
+@media (max-width: 768px) {
+  table,td{
+    display: block;
+  }
+
+  td[data-label]::before {
+    content: attr(data-label) ": ";
+  }
+
+  thead{
+    display: none;
+  }
+}
+
+@media (width: 375px) {
+
+}
