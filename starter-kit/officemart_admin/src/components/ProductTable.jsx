@@ -1,24 +1,31 @@
-﻿import ProductRow from "./ProductRow"
-export default function ProductTable({ products }) {
+﻿import React from "react";
+import ProductRow from "./ProductRow";
 
-    return (
-        <table data-testid="product-table">
-            <thead>
-                <td>Tên</td>
-                <td>Sku</td>
-                <td>Danh mục</td>
-                <td>Giá</td>
-                <td>Tồn kho</td>
-                <td>Trạng thái</td>
-                <td>Hành động</td>
-            </thead>
-            <tbody>
-                {
-                    products.map((product) => (
-                        <ProductRow key={product.id} product={product}></ProductRow>
-                    ))
-                }
-            </tbody>
-        </table>
-    )
+export default function ProductTable({ products, onEdit, onDelete, categoriesMap }) {
+  return (
+    <table data-testid="product-table" className="product-table">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>SKU</th>
+          <th>Danh mục</th>
+          <th>Giá</th>
+          <th>Tồn kho</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products && products.map((product) => (
+          <ProductRow
+            key={product.id}
+            product={product}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            categoriesMap={categoriesMap}
+          />
+        ))}
+      </tbody>
+    </table>
+  );
 }

@@ -1,17 +1,24 @@
-// HOAN_THIEN: dựng bố cục trang và khai báo các route theo đề (Mục 4.1, 4.2, 4.3).
-// Xoá đoạn return bên dưới khi bắt đầu làm bài.
+﻿import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AdminDashboard from "./pages/AdminDashboard";
-import { Navigate, Route, Routes } from "react-router-dom";
+import ProductFormPage from "./pages/ProductFormPage";
+import { ToastProvider } from "./context/ToastContext";
+
 export default function App() {
   return (
-    <div>
-      <div className="banner_admin_product">
-        <span className="banner_admin_product__text">OfficaMart Admin</span>
+    <ToastProvider>
+      <div className="app-container">
+        <header className="banner_admin_product header-banner">
+          <span className="banner_admin_product__text">OfficeMart Admin</span>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<Navigate to="/products" replace />} />
+          <Route path="/products" element={<AdminDashboard />} />
+          <Route path="/products/new" element={<ProductFormPage />} />
+          <Route path="/products/:id/edit" element={<ProductFormPage />} />
+        </Routes>
       </div>
-      <Routes>
-        <Route path = "/" element = {<Navigate to='/products' replace></Navigate>}></Route>
-        <Route path="/products" element = {<AdminDashboard />}></Route>
-      </Routes>
-    </div>
+    </ToastProvider>
   );
 }
